@@ -85,45 +85,33 @@ const sendMail = async ({ to, subject, html, text }) => {
 
 const sendReminder = async (studentName, type, time) => {
   const displayType = type.charAt(0).toUpperCase() + type.slice(1);
-  const currentDate = getColomboDateString();
-  const subject = `🔔 Upcoming Meeting Reminder: ${studentName} (${displayType})`;
+  const subject = `Meeting Reminder - Starts in 10 Minutes`;
   
-  const text = `Hi Team Lead,\n\nThis is a reminder that you have an upcoming ${type} meeting scheduled with ${studentName} on ${currentDate} at ${time}.\n\nPlease prepare to join the meeting.\n\nBest regards,\nSmart Alert System`;
+  const text = `Hello ${studentName},\n\nThis is a reminder that your scheduled meeting will begin in 10 minutes.\n\nMeeting Type: ${displayType}\nMeeting Time: ${time}\n\nPlease be prepared to join on time.`;
   
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
       <div style="background-color: #6366f1; color: white; padding: 24px; text-align: center;">
-        <h1 style="margin: 0; font-size: 24px; font-weight: bold; letter-spacing: 0.5px;">Upcoming Meeting Reminder</h1>
+        <h1 style="margin: 0; font-size: 24px; font-weight: bold; letter-spacing: 0.5px;">Meeting Reminder - Starts in 10 Minutes</h1>
       </div>
       <div style="padding: 24px; background-color: #ffffff; color: #333333; line-height: 1.6;">
-        <p style="font-size: 16px; margin-top: 0;">Hi Team Lead,</p>
-        <p style="font-size: 16px;">This is an automated notification that your next meeting is starting soon:</p>
+        <p style="font-size: 16px; margin-top: 0;">Hello ${studentName},</p>
+        <p style="font-size: 16px;">This is a reminder that your scheduled meeting will begin in 10 minutes.</p>
         
         <div style="background-color: #f3f4f6; border-left: 4px solid #6366f1; padding: 16px; margin: 20px 0; border-radius: 0 8px 8px 0;">
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
-              <td style="padding: 4px 0; font-weight: bold; width: 120px; color: #4b5563;">Student:</td>
-              <td style="padding: 4px 0; font-size: 16px; color: #1f2937;">${studentName}</td>
+              <td style="padding: 4px 0; font-weight: bold; color: #4b5563;">Meeting Type:</td>
+              <td style="padding: 4px 0; font-size: 16px; color: #1f2937;">${displayType}</td>
             </tr>
             <tr>
-              <td style="padding: 4px 0; font-weight: bold; color: #4b5563;">Session:</td>
-              <td style="padding: 4px 0; font-size: 16px; color: #1f2937;">${displayType} Meeting</td>
-            </tr>
-            <tr>
-              <td style="padding: 4px 0; font-weight: bold; color: #4b5563;">Date:</td>
-              <td style="padding: 4px 0; font-size: 16px; color: #1f2937;">${currentDate}</td>
-            </tr>
-            <tr>
-              <td style="padding: 4px 0; font-weight: bold; color: #4b5563;">Time:</td>
+              <td style="padding: 4px 0; font-weight: bold; color: #4b5563;">Meeting Time:</td>
               <td style="padding: 4px 0; font-size: 16px; font-weight: bold; color: #6366f1;">${time}</td>
             </tr>
           </table>
         </div>
         
-        <p style="font-size: 14px; color: #6b7280; margin-bottom: 0;">Please mark this meeting status in your dashboard once completed.</p>
-      </div>
-      <div style="background-color: #f9fafb; padding: 16px; text-align: center; border-top: 1px solid #e5e7eb; font-size: 12px; color: #9ca3af;">
-        Smart Student Meeting Alert System &bull; Apptron Solution
+        <p style="font-size: 14px; color: #6b7280; margin-bottom: 0;">Please be prepared to join on time.</p>
       </div>
     </div>
   `;

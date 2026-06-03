@@ -88,8 +88,8 @@ const runScheduleCheck = async () => {
       const targetMinutes = timeToMinutes(targetTimeStr);
       const diffMinutes = targetMinutes - currentMinutesFromMidnight;
 
-      // Rule A: Upcoming Meeting Reminder (10–15 minutes before meeting time)
-      if (diffMinutes >= 10 && diffMinutes <= 15) {
+      // Rule A: Upcoming Meeting Reminder (Exactly 10 minutes before meeting time)
+      if (diffMinutes >= 5 && diffMinutes <= 10) {
         // Email reminder
         if (!meeting.reminderSent) {
           console.log(`[Scheduler] Sending email reminder for ${meeting.student.name} (${meeting.type}) at ${targetTimeStr}`);
