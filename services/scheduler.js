@@ -53,7 +53,7 @@ const runScheduleCheck = async () => {
             missedAlertSent: false
           } 
         },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
 
       // Evening meeting
@@ -67,7 +67,7 @@ const runScheduleCheck = async () => {
             missedAlertSent: false
           } 
         },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     }
 
